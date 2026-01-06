@@ -15,7 +15,8 @@ const Navbar = () => {
             <img
               src={logo}
               alt={"logo"}
-              className="w-[15%] object-contain rounded-xl "
+              className="w-[15%] object-contain rounded-xl 
+              "
             />
           </Link>
 

@@ -7,9 +7,8 @@ const Home = () => {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <Hero />
+
       <ProductCarousel />
-      <AMCShowcase />
     </main>
   );
 };

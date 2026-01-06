@@ -1,20 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-hydroponics.jpg";
+import heroVideo from "@/assets/hydro.mp4";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute  bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
+    <section className=" min-h-screen flex items-center justify-center  ">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Background video */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
       </div>
 
       <div className="container backdrop-blur-xl rounded-xl p-6 relative z-10 bg-white/50 w-fit">
