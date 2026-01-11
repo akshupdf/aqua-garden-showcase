@@ -123,11 +123,11 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="relative ">
-      <div className="fixed w-full -z-1  ">
+    <div className="relative   w-full">
+      <div className="fixed inset-0 -z-10">
         <Hero />
       </div>
-      <div className="py-20 bg-gradient-to-b from-white to-gray-50  z-[9999] absolute  w-full top-[100vh]">
+      <div className="relative z-10 mt-[100vh] py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="lg:max-w-7xl mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-green-900 mb-4">
             Systems We Handle with Care

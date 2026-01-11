@@ -4,7 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Leaf, Droplets, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
-import amcImage from "@/assets/amc-service.jpg";
+import amcImage from "@/assets/7.1.webp";
+import edu from "@/assets/edu.jpg";
+import farm from "@/assets/farm.jpg";
+import ph from "@/assets/ph.jpeg";
 import { cn } from "@/lib/utils";
 
 const services = [
@@ -61,6 +64,7 @@ export default function AMCShowcase() {
         "Perfect for beginners and home growers",
         "Ready-to-grow system from day one",
       ],
+      bgImage: amcImage,
     },
 
     education: {
@@ -94,6 +98,7 @@ export default function AMCShowcase() {
         "Healthier plants and consistent harvests",
         "Clear understanding of the entire system",
       ],
+      bgImage: edu,
     },
 
     amc: {
@@ -126,6 +131,7 @@ export default function AMCShowcase() {
         "Minimal water and nutrient wastage",
         "Expert care without daily involvement",
       ],
+      bgImage: ph,
     },
 
     consulting: {
@@ -158,96 +164,111 @@ export default function AMCShowcase() {
         "Ideal for underperforming setups",
         "Clear roadmap for scaling and growth",
       ],
+      bgImage: farm,
     },
   };
 
   const content = SERVICE_CONTENT[activeService];
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-[30%_70%] gap-14 items-start">
-          {/* LEFT – SERVICE LIST */}
-          <div className="space-y-3">
-            {services.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveService(item.id)}
-                className={cn(
-                  "group w-full text-left rounded-xl px-5 py-4 transition-all duration-300",
-                  "border border-transparent",
-                  activeService === item.id
-                    ? "bg-primary/10 border-primary shadow-md scale-[1.02]"
-                    : "hover:bg-muted/60 hover:translate-x-1"
-                )}
-                style={{ animationDelay: `${index * 80}ms` }}
+    <section className="   ">
+      <div
+        className="container mx-auto p-6"
+        style={{
+          backgroundImage: `url(${content.bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+        <div className="relative z-10 container mx-auto px-6">
+          <div className="grid md:grid-cols-[30%_70%] gap-14 items-start">
+            {/* LEFT – SERVICE LIST */}
+            <div className="space-y-3">
+              {services.map((item, index) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveService(item.id)}
+                  className={cn(
+                    "group w-full text-left rounded-xl px-5 py-4 transition-all duration-300",
+                    "border border-transparent",
+                    activeService === item.id
+                      ? "bg-primary/10 border-primary shadow-md scale-[1.02]"
+                      : "hover:bg-muted/60 hover:translate-x-1"
+                  )}
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <h4 className="font-semibold text-foreground">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {item.subtitle}
+                  </p>
+                </button>
+              ))}
+            </div>
+
+            {/* RIGHT – CONTENT */}
+            <div className="animate-fade-in space-y-8">
+              <h2
+                className="text-4xl md:text-5xl font-bold text-foreground"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                <h4 className="font-semibold text-foreground">{item.title}</h4>
-                <p className="text-sm text-muted-foreground">{item.subtitle}</p>
-              </button>
-            ))}
-          </div>
+                {content.heading}
+              </h2>
 
-          {/* RIGHT – CONTENT */}
-          <div className="animate-fade-in space-y-8">
-            <h2
-              className="text-4xl md:text-5xl font-bold text-foreground"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              {content.heading}
-            </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl">
+                {content.description}
+              </p>
 
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              {content.description}
-            </p>
-
-            {/* FEATURES */}
-            <div className="space-y-6">
+              {/* FEATURES */}
               <div className="space-y-6">
-                {content.features.map((feature, i) => {
-                  const Icon = feature.icon;
-                  return (
-                    <div key={i} className="flex gap-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-primary" />
+                <div className="space-y-6">
+                  {content.features.map((feature, i) => {
+                    const Icon = feature.icon;
+                    return (
+                      <div key={i} className="flex gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold">{feature.title}</h3>
+                          <p className="text-sm text-muted-foreground">
+                            {feature.description}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold">{feature.title}</h3>
-                        <p className="text-sm text-muted-foreground">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
-            {/* BENEFITS */}
-            <div className="bg-muted/50 rounded-xl p-6">
-              <h4 className="font-semibold mb-4">What You’ll Get</h4>
-              <ul className="space-y-3">
-                {content.benefits.map((benefit, i) => (
-                  <li key={i} className="flex gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
-                    <span className="text-sm">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* BENEFITS */}
+              <div className="bg-muted/50 rounded-xl p-6">
+                <h4 className="font-semibold mb-4">What You’ll Get</h4>
+                <ul className="space-y-3">
+                  {content.benefits.map((benefit, i) => (
+                    <li key={i} className="flex gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
+                      <span className="text-sm">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <Link to="/contact">
-              <Button size="lg">Request AMC Service</Button>
-            </Link>
+              {/* <Link to="/contact">
+                <Button size="lg">Request AMC Service</Button>
+              </Link> */}
 
-            {/* IMAGE */}
-            {/* <div className="rounded-2xl overflow-hidden shadow-[var(--card-hover-shadow)]">
+              {/* IMAGE */}
+              {/* <div className="rounded-2xl overflow-hidden shadow-[var(--card-hover-shadow)]">
               <img
                 src={amcImage}
                 alt="AMC Service"
                 className="w-full h-[360px] object-cover"
               />
             </div> */}
+            </div>
           </div>
         </div>
       </div>

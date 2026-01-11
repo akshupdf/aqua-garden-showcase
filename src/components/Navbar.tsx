@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link
               to="/"
               className={`lg:text-lg text-sm font-medium transition-colors  ${
-                isActive("/") ? "text-black" : "text-foreground"
+                isActive("/") ? "text-primary" : "text-foreground"
               }`}
             >
               Home
@@ -44,6 +44,14 @@ const Navbar = () => {
               }`}
             >
               Contact
+            </Link>
+            <Link
+              to="/articles"
+              className={`lg:text-lg text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/articles") ? "text-primary " : "text-foreground"
+              }`}
+            >
+              Articles
             </Link>
           </div>
         </div>
