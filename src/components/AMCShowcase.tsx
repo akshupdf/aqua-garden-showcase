@@ -171,18 +171,19 @@ export default function AMCShowcase() {
   const content = SERVICE_CONTENT[activeService];
 
   return (
-    <section className="   ">
+    <section className="  relative mt-10 ">
       <div
-        className="container mx-auto p-6"
+        className="container mx-auto p-6 h-screen overflow-hidden"
         style={{
           backgroundImage: `url(${content.bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-white/30 backdrop-blur-xs h-screen  " />
+
         <div className="relative z-10 container mx-auto px-6">
-          <div className="grid md:grid-cols-[30%_70%] gap-14 items-start">
+          <div className="grid md:grid-cols-[30%_70%] gap-4 items-start">
             {/* LEFT – SERVICE LIST */}
             <div className="space-y-3">
               {services.map((item, index) => (
@@ -193,7 +194,7 @@ export default function AMCShowcase() {
                     "group w-full text-left rounded-xl px-5 py-4 transition-all duration-300",
                     "border border-transparent",
                     activeService === item.id
-                      ? "bg-primary/10 border-primary shadow-md scale-[1.02]"
+                      ? "bg-muted/60 border-primary shadow-md scale-[1.02]"
                       : "hover:bg-muted/60 hover:translate-x-1"
                   )}
                   style={{ animationDelay: `${index * 80}ms` }}
@@ -209,7 +210,7 @@ export default function AMCShowcase() {
             </div>
 
             {/* RIGHT – CONTENT */}
-            <div className="animate-fade-in space-y-8">
+            <div className="animate-fade-in   bg-muted/60 p-4 rounded-xl shadow-md">
               <h2
                 className="text-4xl md:text-5xl font-bold text-foreground"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
