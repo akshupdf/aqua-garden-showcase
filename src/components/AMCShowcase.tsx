@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Leaf, Droplets, Sun } from "lucide-react";
+import { CheckCircle2, Leaf, Droplets, Sun, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import amcImage from "@/assets/7.1.webp";
 import edu from "@/assets/edu.jpg";
@@ -171,73 +171,88 @@ export default function AMCShowcase() {
   const content = SERVICE_CONTENT[activeService];
 
   return (
-    <section className="  relative mt-10 ">
-      <div
-        className="container mx-auto p-6 h-screen overflow-hidden"
-        style={{
-          backgroundImage: `url(${content.bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-white/30 backdrop-blur-xs h-screen  " />
+    <section className="relative py-16 overflow-hidden">
+      {/* Background Image with Light Overlay */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: `url(${content.bgImage})`,
+          }}
+        />
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
+      </div>
 
-        <div className="relative z-10 container mx-auto px-6">
-          <div className="grid md:grid-cols-[30%_70%] gap-4 items-start">
-            {/* LEFT – SERVICE LIST */}
-            <div className="space-y-3">
-              {services.map((item, index) => (
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[300px_1fr] gap-6 items-start">
+            {/* LEFT - SERVICE LIST */}
+            <div className="space-y-2">
+              <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                <Leaf className="w-5 h-5 text-green-600" />
+                Our Services
+              </h3>
+              {services.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveService(item.id)}
                   className={cn(
-                    "group w-full text-left rounded-xl px-5 py-4 transition-all duration-300",
-                    "border border-transparent",
+                    "group w-full text-left rounded-xl px-5 py-3 transition-all duration-300",
                     activeService === item.id
-                      ? "bg-muted/60 border-primary shadow-md scale-[1.02]"
-                      : "hover:bg-muted/60 hover:translate-x-1"
+                      ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg scale-105"
+                      : "bg-white/70 backdrop-blur-md hover:bg-white/90 border border-white/40 shadow-md"
                   )}
-                  style={{ animationDelay: `${index * 80}ms` }}
                 >
-                  <h4 className="font-semibold text-foreground">
+                  <h4 className="font-bold text-base mb-1 flex items-center justify-between">
                     {item.title}
+                    {activeService === item.id && (
+                      <ArrowRight className="w-4 h-4" />
+                    )}
                   </h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className={cn(
+                    "text-xs",
+                    activeService === item.id ? "text-white/90" : "text-foreground/70"
+                  )}>
                     {item.subtitle}
                   </p>
                 </button>
               ))}
             </div>
 
-            {/* RIGHT – CONTENT */}
-            <div className="animate-fade-in   bg-muted/60 p-4 rounded-xl shadow-md">
-              <h2
-                className="text-4xl md:text-5xl font-bold text-foreground"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              >
+            {/* RIGHT - CONTENT */}
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 lg:p-8 border border-white/60">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
                 {content.heading}
               </h2>
 
-              <p className="text-lg text-muted-foreground max-w-2xl">
+              <p className="text-base text-foreground/90 max-w-2xl mb-6">
                 {content.description}
               </p>
 
               {/* FEATURES */}
-              <div className="space-y-6">
-                <div className="space-y-6">
+              <div className="space-y-4 mb-6">
+                <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
+                  <Sun className="w-5 h-5 text-green-600" />
+                  What We Offer
+                </h3>
+                <div className="grid md:grid-cols-3 gap-4">
                   {content.features.map((feature, i) => {
                     const Icon = feature.icon;
                     return (
-                      <div key={i} className="flex gap-4">
-                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Icon className="w-6 h-6 text-primary" />
+                      <div
+                        key={i}
+                        className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-green-100 hover:shadow-md transition-all duration-300"
+                      >
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 flex items-center justify-center mb-3">
+                          <Icon className="w-6 h-6 text-white" />
                         </div>
-                        <div>
-                          <h3 className="font-semibold">{feature.title}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            {feature.description}
-                          </p>
-                        </div>
+                        <h4 className="font-bold text-foreground text-sm mb-1">
+                          {feature.title}
+                        </h4>
+                        <p className="text-xs text-foreground/80 leading-relaxed">
+                          {feature.description}
+                        </p>
                       </div>
                     );
                   })}
@@ -245,30 +260,31 @@ export default function AMCShowcase() {
               </div>
 
               {/* BENEFITS */}
-              <div className="bg-muted/50 rounded-xl p-6">
-                <h4 className="font-semibold mb-4">What You’ll Get</h4>
-                <ul className="space-y-3">
+              <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl p-5 text-white mb-6 shadow-lg">
+                <h4 className="font-bold text-base mb-3 flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5" />
+                  What You'll Get
+                </h4>
+                <ul className="space-y-2">
                   {content.benefits.map((benefit, i) => (
-                    <li key={i} className="flex gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
-                      <span className="text-sm">{benefit}</span>
+                    <li key={i} className="flex gap-2 items-start text-sm">
+                      <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                      <span className="leading-relaxed">{benefit}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* <Link to="/contact">
-                <Button size="lg">Request AMC Service</Button>
-              </Link> */}
-
-              {/* IMAGE */}
-              {/* <div className="rounded-2xl overflow-hidden shadow-[var(--card-hover-shadow)]">
-              <img
-                src={amcImage}
-                alt="AMC Service"
-                className="w-full h-[360px] object-cover"
-              />
-            </div> */}
+              {/* CTA Button */}
+              <Link to="/contact">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold px-6 py-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  {content.cta}
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

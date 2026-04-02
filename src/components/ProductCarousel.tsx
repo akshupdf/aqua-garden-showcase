@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import nftin from "../assets/nftin.jpeg";
 import nftout from "../assets/nftout.jpeg";
 import dutch from "../assets/dutch.jpg";
 import tower from "../assets/tower.jpg";
 import Hero from "./Hero";
 import AMCShowcase from "./AMCShowcase";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const products = [
   {
@@ -20,6 +22,7 @@ const products = [
       "Easy maintenance",
     ],
     idealFor: "Lettuce, Spinach, Basil, Mint",
+    categoryId: "nft",
   },
   {
     name: "NFT Channel Outdoor System",
@@ -33,6 +36,7 @@ const products = [
       "Natural light integration",
     ],
     idealFor: "Tomatoes, Peppers, Cucumbers, Herbs",
+    categoryId: "nft",
   },
   {
     name: "Dutch Bucket System",
@@ -46,6 +50,7 @@ const products = [
       "Supports heavy crops",
     ],
     idealFor: "Tomatoes, Peppers, Eggplant, Zucchini",
+    categoryId: "dutch",
   },
   {
     name: "Aeroponics Tower System",
@@ -59,6 +64,7 @@ const products = [
       "Minimal water usage",
     ],
     idealFor: " Lettuce, Herbs, Microgreens",
+    categoryId: "aeroponics",
   },
 ];
 
@@ -123,23 +129,39 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="relative   w-full">
+    <div className="relative w-full">
       <div className="fixed inset-0 -z-10">
         <Hero />
       </div>
-      <div className="relative z-10 mt-[100vh] py-20 bg-gradient-to-b from-white to-gray-50">
+      <div className="relative z-10 mt-[100vh] py-12 bg-gradient-to-b from-white via-gray-50 to-gray-100">
         <div className="lg:max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-green-900 mb-4">
-            Systems We Handle with Care
-          </h2>
-          <p className="text-center text-gray-600 text-lg mb-4 max-w-2xl mx-auto">
-            Professional hydroponic solutions designed for optimal growth and
-            maximum yields
-          </p>
+          <div className="text-center mb-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <span>🌿</span>
+              <span>Our Expertise</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-3">
+              Systems We Handle with Care
+            </h2>
+            <p className="text-center text-gray-600 text-base mb-6 max-w-2xl mx-auto">
+              Professional hydroponic solutions designed for optimal growth and maximum yields
+            </p>
+
+            {/* View All Products Button */}
+            <Link to="/products">
+              <Button
+                size="default"
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold px-6 py-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                View All Products
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
 
           <div
             className="relative flex items-center justify-center"
-            style={{ perspective: "2000px", minHeight: "750px" }}
+            style={{ perspective: "2000px", minHeight: "550px" }}
           >
             <div className="relative w-full max-w-2xl flex items-center justify-center">
               {products.map((product, index) => {
@@ -165,10 +187,10 @@ const ProductCarousel = () => {
                     }}
                   >
                     <div
-                      className={`bg-white rounded-3xl overflow-hidden `}
-                      style={{ width: "450px" }}
+                      className={`bg-white rounded-3xl overflow-hidden shadow-2xl`}
+                      style={{ width: "380px" }}
                     >
-                      <div className="relative h-80 overflow-hidden">
+                      <div className="relative h-64 overflow-hidden">
                         <img
                           src={product.img}
                           alt={product.name}
@@ -177,23 +199,23 @@ const ProductCarousel = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
                       </div>
 
-                      <div className="p-8">
-                        <h3 className="text-2xl font-bold text-green-900 mb-3">
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                           {product.name}
                         </h3>
-                        <p className="text-gray-700 text-base mb-5 leading-relaxed">
+                        <p className="text-sm text-gray-700 mb-4 leading-relaxed line-clamp-2">
                           {product.description}
                         </p>
 
-                        <div className="mb-5">
-                          <h4 className="text-sm font-semibold text-green-700 uppercase tracking-wide mb-3">
+                        <div className="mb-4">
+                          <h4 className="text-xs font-semibold text-green-700 uppercase tracking-wide mb-2">
                             Key Features
                           </h4>
                           <div className="grid grid-cols-2 gap-2">
                             {product.features.map((feature, idx) => (
                               <div key={idx} className="flex items-start">
-                                <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 mt-2 flex-shrink-0"></span>
-                                <span className="text-sm text-gray-600">
+                                <span className="w-1 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
+                                <span className="text-xs text-gray-600">
                                   {feature}
                                 </span>
                               </div>
@@ -201,13 +223,27 @@ const ProductCarousel = () => {
                           </div>
                         </div>
 
-                        <div className="pt-4 border-t border-gray-200">
-                          <p className="text-sm text-green-700 font-medium mb-1">
+                        <div className="pt-3 border-t border-gray-200">
+                          <p className="text-xs text-green-700 font-medium mb-1">
                             Ideal for:
                           </p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-xs text-gray-600">
                             {product.idealFor}
                           </p>
+                        </div>
+
+                        {/* Link to Product Category */}
+                        <div className="mt-4">
+                          <Link to={`/products?category=${product.categoryId}`}>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="w-full border-green-600 text-green-600 hover:bg-green-50 hover:text-green-700 font-semibold text-sm"
+                            >
+                              Learn More
+                              <ArrowRight className="ml-2 w-3 h-3" />
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -218,27 +254,27 @@ const ProductCarousel = () => {
 
             <button
               onClick={prevSlide}
-              className="lg:flex hidden absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-white/95 backdrop-blur p-4 rounded-full shadow-xl hover:bg-green-50 hover:shadow-2xl transition-all hover:scale-110 active:scale-95"
+              className="lg:flex hidden absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-white/95 backdrop-blur p-3 rounded-full shadow-xl hover:bg-green-50 hover:shadow-2xl transition-all hover:scale-110 active:scale-95"
             >
-              <ChevronLeft className="w-7 h-7 text-green-700" />
+              <ChevronLeft className="w-5 h-5 text-green-700" />
             </button>
             <button
               onClick={nextSlide}
-              className="lg:flex hidden absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-white/95 backdrop-blur p-4 rounded-full shadow-xl hover:bg-green-50 hover:shadow-2xl transition-all hover:scale-110 active:scale-95"
+              className="lg:flex hidden absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-white/95 backdrop-blur p-3 rounded-full shadow-xl hover:bg-green-50 hover:shadow-2xl transition-all hover:scale-110 active:scale-95"
             >
-              <ChevronRight className="w-7 h-7 text-green-700" />
+              <ChevronRight className="w-5 h-5 text-green-700" />
             </button>
           </div>
 
-          <div className="flex justify-center mt-16 space-x-3">
+          <div className="flex justify-center mt-10 space-x-2">
             {products.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`transition-all duration-300 rounded-full ${
                   index === currentSlide
-                    ? "bg-green-600 w-12 h-3"
-                    : "bg-gray-300 w-3 h-3 hover:bg-gray-400"
+                    ? "bg-gradient-to-r from-green-600 to-emerald-600 w-10 h-2.5"
+                    : "bg-gray-300 w-2.5 h-2.5 hover:bg-gray-400"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
