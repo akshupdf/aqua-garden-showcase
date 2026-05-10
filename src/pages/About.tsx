@@ -42,8 +42,14 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50"></div>
         <div className="absolute inset-0 bg-[url(‘data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMmM1NWUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMi0yIC44OTUtMiAyIC44OTUgMiAyIDJ6bTAgMThjMS4xMDUgMCAyLS44OTUgMi0ycy0uODk1LTItMi0yLTIgLjg5NS0yIDIgLjg5NSAyIDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==’)] opacity-40"></div>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-400/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
+        <div
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-400/10 rounded-full blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "2s" }}
+        ></div>
       </div>
 
       <Navbar />
@@ -60,7 +66,8 @@ const About = () => {
               About Asquare Hydroponics
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Engineering innovation meets modern farming passion. Transforming spaces, one harvest at a time.
+              Engineering innovation meets modern farming passion. Transforming
+              spaces, one harvest at a time.
             </p>
           </div>
 
@@ -77,16 +84,31 @@ const About = () => {
               </div>
               <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                 <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-green-600 first-letter:float-left first-letter:mr-3">
-                  Founded in 2022 by engineers <strong className="text-green-700">Akshay Pednekar</strong> and <strong className="text-green-700">Anoop Pathak</strong>, A² Hydroponics was born from a shared passion for transforming how people grow food.
+                  Founded in 2022 by engineers{" "}
+                  <strong className="text-green-700">Anoop Pathak</strong> and{" "}
+                  <strong className="text-green-700">Akshay Pednekar</strong> ,
+                  A² Hydroponics was born from a shared passion for transforming
+                  how people grow food.
                 </p>
                 <p>
-                  What began as a curiosity for sustainable farming has evolved into a mission — bringing modern hydroponic systems to homes, cafés, and businesses across the city. We believe that fresh, pesticide-free produce should be accessible to everyone.
+                  What began as a curiosity for sustainable farming has evolved
+                  into a mission — bringing modern hydroponic systems to homes,
+                  cafés, and businesses across the city. We believe that fresh,
+                  pesticide-free produce should be accessible to everyone.
                 </p>
                 <p>
-                  We specialize in <strong className="text-green-700">AMC (Annual Maintenance Contracts)</strong> for hydroponic setups, ensuring that every installation continues to flourish year-round with minimal effort from you.
+                  We specialize in{" "}
+                  <strong className="text-green-700">
+                    AMC (Annual Maintenance Contracts)
+                  </strong>{" "}
+                  for hydroponic setups, ensuring that every installation
+                  continues to flourish year-round with minimal effort from you.
                 </p>
                 <p>
-                  At A² Hydroponics, we combine engineering precision with nature’s rhythm — creating reliable, efficient, and aesthetic systems that make indoor farming easy, beautiful, and sustainable.
+                  At A² Hydroponics, we combine engineering precision with
+                  nature’s rhythm — creating reliable, efficient, and aesthetic
+                  systems that make indoor farming easy, beautiful, and
+                  sustainable.
                 </p>
               </div>
             </div>
@@ -106,8 +128,12 @@ const About = () => {
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <div className="text-3xl font-bold text-green-600 mb-2">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-3xl font-bold text-green-600 mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {stat.label}
+                    </div>
                   </div>
                 );
               })}

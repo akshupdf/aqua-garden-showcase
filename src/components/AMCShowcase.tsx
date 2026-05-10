@@ -188,7 +188,7 @@ export default function AMCShowcase() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-[300px_1fr] gap-6 items-start">
             {/* LEFT - SERVICE LIST */}
-            <div className="space-y-2">
+            <div className="space-y-2 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 lg:p-8 border border-white/60">
               <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                 <Leaf className="w-5 h-5 text-green-600" />
                 Our Services
@@ -210,10 +210,14 @@ export default function AMCShowcase() {
                       <ArrowRight className="w-4 h-4" />
                     )}
                   </h4>
-                  <p className={cn(
-                    "text-xs",
-                    activeService === item.id ? "text-white/90" : "text-foreground/70"
-                  )}>
+                  <p
+                    className={cn(
+                      "text-xs",
+                      activeService === item.id
+                        ? "text-white/90"
+                        : "text-foreground/70"
+                    )}
+                  >
                     {item.subtitle}
                   </p>
                 </button>

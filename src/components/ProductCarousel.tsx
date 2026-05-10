@@ -144,7 +144,8 @@ const ProductCarousel = () => {
               Systems We Handle with Care
             </h2>
             <p className="text-center text-gray-600 text-base mb-6 max-w-2xl mx-auto">
-              Professional hydroponic solutions designed for optimal growth and maximum yields
+              Professional hydroponic solutions designed for optimal growth and
+              maximum yields
             </p>
 
             {/* View All Products Button */}
@@ -266,7 +267,7 @@ const ProductCarousel = () => {
             </button>
           </div>
 
-          <div className="flex justify-center mt-10 space-x-2">
+          <div className="flex justify-center mt-10 mb-4 space-x-2">
             {products.map((_, index) => (
               <button
                 key={index}
