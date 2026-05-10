@@ -24,7 +24,7 @@ const Home = () => {
           <div className="max-w-2xl mx-auto">
             <ContactForm
               showTitle={false}
-              whatsappNumber="919876543210"
+              whatsappNumber="919152678498"
             />
           </div>
         </div>

@@ -15,7 +15,7 @@ interface ContactFormProps {
 const ContactForm = ({
   title = "Get In Touch",
   description = "Ready to start your hydroponic journey? Send us a message!",
-  whatsappNumber = "9152678498  ",
+  whatsappNumber = "919152678498",
   showTitle = true,
 }: ContactFormProps) => {
   const [formData, setFormData] = useState({

@@ -9,21 +9,32 @@ export default function ArticleDetailPage() {
   const { slug } = useParams();
   const [article, setArticle] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchArticle();
   }, [slug]);
 
   const fetchArticle = async () => {
-    const { data, error } = await supabase
-      .from("blogs")
-      .select("*")
-      .eq("slug", slug)
-      .eq("is_published", true)
-      .single();
+    setError(null);
 
-    if (!error) {
-      setArticle(data);
+    try {
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")
+        .eq("slug", slug)
+        .eq("is_published", true)
+        .single();
+
+      if (error) {
+        console.error("Supabase error:", error);
+        setError(`Failed to load article: ${error.message}`);
+      } else {
+        setArticle(data);
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      setError("An unexpected error occurred while loading the article");
     }
 
     setLoading(false);
@@ -33,6 +44,20 @@ export default function ArticleDetailPage() {
     return (
       <div className="py-24 text-center text-muted-foreground">
         Loading article...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="py-24 px-6">
+        <div className="max-w-3xl mx-auto bg-red-50 border border-red-200 rounded-lg p-6">
+          <h3 className="text-red-800 font-semibold mb-2">Error Loading Article</h3>
+          <p className="text-red-600 text-sm">{error}</p>
+          <p className="text-red-600 text-xs mt-2">
+            Check the browser console for more details and verify your Supabase configuration.
+          </p>
+        </div>
       </div>
     );
   }

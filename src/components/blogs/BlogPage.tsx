@@ -3,6 +3,7 @@
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { testSupabaseConnection } from "@/lib/supabase-test";
 
 type Blog = {
   id: string;
@@ -29,32 +30,43 @@ export default function BlogPage() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    testSupabaseConnection(); // Test connection on component mount
     fetchBlogs();
   }, [activeCategory, search]);
 
   const fetchBlogs = async () => {
     setLoading(true);
+    setError(null);
 
-    let query = supabase
-      .from("blogs")
-      .select("*")
-      .eq("is_published", true)
-      .order("published_at", { ascending: false });
+    try {
+      let query = supabase
+        .from("blogs")
+        .select("*")
+        .eq("is_published", true)
+        .order("published_at", { ascending: false });
 
-    if (activeCategory !== "all") {
-      query = query.eq("category", activeCategory);
-    }
+      if (activeCategory !== "all") {
+        query = query.eq("category", activeCategory);
+      }
 
-    if (search.trim()) {
-      query = query.ilike("title", `%${search}%`);
-    }
+      if (search.trim()) {
+        query = query.ilike("title", `%${search}%`);
+      }
 
-    const { data, error } = await query;
+      const { data, error } = await query;
 
-    if (!error && data) {
-      setBlogs(data);
+      if (error) {
+        console.error("Supabase error:", error);
+        setError(`Failed to load blogs: ${error.message}`);
+      } else if (data) {
+        setBlogs(data);
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      setError("An unexpected error occurred while loading blogs");
     }
 
     setLoading(false);
@@ -101,15 +113,26 @@ export default function BlogPage() {
               />
             ))}
 
+          {/* ERROR STATE */}
+          {!loading && error && (
+            <div className="col-span-full bg-red-50 border border-red-200 rounded-lg p-6">
+              <h3 className="text-red-800 font-semibold mb-2">Error Loading Blogs</h3>
+              <p className="text-red-600 text-sm">{error}</p>
+              <p className="text-red-600 text-xs mt-2">
+                Check the browser console for more details and verify your Supabase configuration.
+              </p>
+            </div>
+          )}
+
           {/* EMPTY STATE */}
-          {!loading && blogs.length === 0 && (
+          {!loading && !error && blogs.length === 0 && (
             <p className="col-span-full text-center text-muted-foreground">
               No articles found.
             </p>
           )}
 
           {/* BLOG CARDS */}
-          {!loading &&
+          {!loading && !error &&
             blogs.map((blog) => (
               <Link
                 key={blog.id}

@@ -37,7 +37,7 @@ const Contact = () => {
                   <Mail className="w-6 h-6 text-green-600" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">Email Us</h3>
-                <p className="text-sm text-muted-foreground">info@asquarehydroponics.com</p>
+                <p className="text-sm text-muted-foreground">asquarehydro@gmail.com</p>
               </div>
             </Card>
 
@@ -47,7 +47,7 @@ const Contact = () => {
                   <Phone className="w-6 h-6 text-green-600" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
-                <p className="text-sm text-muted-foreground">+91 98765 43210</p>
+                <p className="text-sm text-muted-foreground">+91 9152678498 / +91 9320222449</p>
               </div>
             </Card>
 
@@ -75,7 +75,7 @@ const Contact = () => {
           <div className="max-w-2xl mx-auto animate-fade-in-up">
             <ContactForm
               showTitle={false}
-              whatsappNumber="919876543210"
+              whatsappNumber="919152678498"
             />
           </div>
         </div>
