@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -244,7 +244,8 @@ const Products = () => {
   const CategoryIcon = currentCategory.icon;
 
   return (
-    <main className="min-h-screen relative">
+    <Layout>
+      <div className="min-h-screen relative">
       {/* Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50"></div>
@@ -255,9 +256,7 @@ const Products = () => {
         ></div>
       </div>
 
-      <Navbar />
-
-      <section className="pt-24 pb-24 relative">
+      <section className="pt-4 pb-24 relative">
         <div className="container mx-auto px-6">
           {/* Compact Header */}
           <div className="max-w-xl mx-auto text-center mb-6 animate-fade-in">
@@ -346,13 +345,6 @@ const Products = () => {
                           </span>
                         </div>
                       )}
-
-                      {/* Price on Hover */}
-                      <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="bg-white/90 backdrop-blur-sm text-green-600 text-sm font-bold px-2 py-1 rounded-lg shadow-lg">
-                          {product.price}
-                        </span>
-                      </div>
                     </div>
 
                     {/* Product Content */}
@@ -445,12 +437,6 @@ const Products = () => {
                       {selectedProduct.tag}
                     </span>
                   )}
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-white">
-                      {selectedProduct.price}
-                    </div>
-                    <div className="text-xs text-white/80">Starting price</div>
-                  </div>
                 </div>
               </div>
 
@@ -553,7 +539,8 @@ const Products = () => {
           </div>
         </div>
       )}
-    </main>
+    </div>
+    </Layout>
   );
 };
 

@@ -1,12 +1,11 @@
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
 import ProductCarousel from "@/components/ProductCarousel";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 
 const Home = () => {
   return (
-    <main className="min-h-screen">
-      <Navbar />
+    <Layout>
       <ProductCarousel />
 
       {/* Contact Form Section */}
@@ -31,7 +30,7 @@ const Home = () => {
       </section>
 
       <Footer />
-    </main>
+    </Layout>
   );
 };
 

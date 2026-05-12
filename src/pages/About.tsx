@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
 import { Sprout, Users, Award, Heart, Target, Leaf } from "lucide-react";
 
 const values = [
@@ -28,47 +28,39 @@ const values = [
 ];
 
 const stats = [
-  { value: "500+", label: "Happy Clients", icon: Users },
-  { value: "50+", label: "Projects Completed", icon: Award },
+  { value: "25+", label: "Happy Clients", icon: Users },
+  { value: "30+", label: "Projects Completed", icon: Award },
   { value: "3+", label: "Years Experience", icon: Leaf },
   { value: "100%", label: "Client Satisfaction", icon: Heart },
 ];
 
 const About = () => {
   return (
-    <main className="min-h-screen relative">
-      {/* Fullscreen Animated Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50"></div>
-        <div className="absolute inset-0 bg-[url(‘data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMmM1NWUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMi0yIC44OTUtMiAyIC44OTUgMiAyIDJ6bTAgMThjMS4xMDUgMCAyLS44OTUgMi0ycy0uODk1LTItMi0yLTIgLjg5NS0yIDIgLjg5NSAyIDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==’)] opacity-40"></div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl animate-pulse-slow"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-400/10 rounded-full blur-3xl animate-pulse-slow"
-          style={{ animationDelay: "2s" }}
-        ></div>
-      </div>
+    <Layout>
+      <div className="min-h-screen relative">
+        {/* Fullscreen Animated Background */}
+        <div className="fixed inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50"></div>
+          <div className="absolute inset-0 bg-[url(‘data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMmM1NWUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMi0yIC44OTUtMiAyIC44OTUgMiAyIDJ6bTAgMThjMS4xMDUgMCAyLS44OTUgMi0ycy0uODk1LTItMi0yLTIgLjg5NS0yIDIgLjg5NSAyIDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==’)] opacity-40"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
+          <div
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl animate-pulse-slow"
+            style={{ animationDelay: "1s" }}
+          ></div>
+          <div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-400/10 rounded-full blur-3xl animate-pulse-slow"
+            style={{ animationDelay: "2s" }}
+          ></div>
+        </div>
 
-      <Navbar />
-
-      <section className="pt-32 pb-24 relative">
-        <div className="container mx-auto px-6">
+        <section className="pt-12 pb-24 relative">
+          <div className="container mx-auto px-6">
           {/* Hero Section */}
-          <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Target className="w-4 h-4" />
-              <span>Our Story</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+
+          <div className="max-w-xl mx-auto text-center mb-6 animate-fade-in">
+            <h1 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               About Asquare Hydroponics
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Engineering innovation meets modern farming passion. Transforming
-              spaces, one harvest at a time.
-            </p>
           </div>
 
           {/* About Content */}
@@ -173,7 +165,8 @@ const About = () => {
           </div>
         </div>
       </section>
-    </main>
+      </div>
+    </Layout>
   );
 };
 

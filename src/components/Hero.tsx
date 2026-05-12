@@ -22,8 +22,14 @@ const Hero = () => {
       {/* Animated floating elements */}
       <div className="absolute inset-0 z-5 pointer-events-none">
         <div className="absolute top-20 left-10 w-20 h-20 bg-green-400/20 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-emerald-400/20 rounded-full blur-xl animate-float" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-teal-400/20 rounded-full blur-xl animate-float" style={{ animationDelay: "4s" }}></div>
+        <div
+          className="absolute bottom-20 right-10 w-32 h-32 bg-emerald-400/20 rounded-full blur-xl animate-float"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/4 w-16 h-16 bg-teal-400/20 rounded-full blur-xl animate-float"
+          style={{ animationDelay: "4s" }}
+        ></div>
       </div>
 
       {/* Content */}
@@ -41,11 +47,19 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            Keeping your hydroponic garden fresh, balanced, and worry-free — that's our specialty. Transform your space with our expert AMC services.
+          <p
+            className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fade-in-up"
+            style={{ animationDelay: "0.2s" }}
+          >
+            Keeping your hydroponic garden fresh, balanced, and worry-free —
+            that's our specialty. Transform your space with our expert AMC
+            services.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+          <div
+            className="flex flex-wrap gap-4 justify-center animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             <Link to="/contact">
               <Button
                 size="lg"
@@ -67,17 +81,26 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
+          <div
+            className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in-up"
+            style={{ animationDelay: "0.6s" }}
+          >
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                20+
+              </div>
               <div className="text-sm text-white/80">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">50+</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                30+
+              </div>
               <div className="text-sm text-white/80">Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">3+</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                3+
+              </div>
               <div className="text-sm text-white/80">Years Experience</div>
             </div>
           </div>

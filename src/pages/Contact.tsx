@@ -1,86 +1,136 @@
-import Navbar from "@/components/Navbar";
-import { Card } from "@/components/ui/card";
+import Layout from "@/components/Layout";
 import ContactForm from "@/components/ContactForm";
-import vcard from "../assets/vcard.png";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import contact_bg from "../assets/contact_bg.png";
 
 const Contact = () => {
   return (
-    <main className="min-h-screen relative">
-      {/* Fullscreen Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMmM1NWUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMi0yIC44OTUtMiAyIC44OTUgMiAyIDJ6bTAgMThjMS4xMDUgMCAyLS44OTUgMi0ycy0uODk1LTItMi0yLTIgLjg5NS0yIDIgLjg5NSAyIDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-40"></div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
-      </div>
+    <Layout>
+      <div className="relative h-screen overflow-hidden">
+        {/* Background Image */}
+        <div className="fixed inset-0 -z-10">
+          <img
+            src={contact_bg}
+            alt="Contact Background"
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
 
-      <Navbar />
+        {/* Dark overlay on left side for text visibility */}
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
+        </div>
 
-      <section className="pt-32 pb-24 relative">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-              Get In Touch
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to start your hydroponic journey? We're here to help you
-              every step of the way.
-            </p>
+        {/* Main Content - Full Height Flex Container */}
+        <div className="h-full flex">
+          {/* Left Side - Text Content */}
+          <div className="w-full lg:w-1/2 flex flex-col  mt-8 px-6 lg:px-12  ">
+            <div className="max-w-xl space-y-2">
+              {/* Heading */}
+              <div className="space-y-2">
+                <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-white">
+                  Grow Fresh.
+                  <span className="text-green-400">Live Better.</span>
+                </h1>
+
+                <p className="text-base lg:text-lg text-gray-100 leading-relaxed max-w-lg">
+                  Custom hydroponic solutions for your home, balcony, terrace,
+                  or commercial farming space.
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-green-600/20 flex items-center justify-center shrink-0">
+                    <span className="text-xl">🌱</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      Custom Hydroponic Setups
+                    </h3>
+                    <p className="text-gray-200 text-sm">
+                      Tailored hydroponic systems designed for your space and
+                      needs.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-green-600/20 flex items-center justify-center shrink-0">
+                    <span className="text-xl">🛠️</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      AMC & Maintenance
+                    </h3>
+                    <p className="text-gray-200 text-sm">
+                      Hassle-free maintenance and guidance for healthy plant
+                      growth.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-green-600/20 flex items-center justify-center shrink-0">
+                    <span className="text-xl">🏡</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      Balcony & Terrace Farming
+                    </h3>
+                    <p className="text-gray-200 text-sm">
+                      Grow fresh vegetables right at your home with modern
+                      systems.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Card */}
+              <div className="pt-4">
+                <div className="backdrop-blur-md bg-white/70 border border-white/40 rounded-2xl shadow-xl p-6">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        Akshay Pednekar
+                      </h4>
+                      <p className="text-base text-gray-700 mt-1">
+                        +91 91526 78498
+                      </p>
+                    </div>
+
+                    <div className="border-t border-gray-200 pt-4">
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        Anoop Pathak
+                      </h4>
+                      <p className="text-base text-gray-700 mt-1">
+                        +91 93202 22449
+                      </p>
+                    </div>
+
+                    <div className="border-t border-gray-200 pt-4 space-y-2">
+                      <p className="text-sm text-gray-700 break-all">
+                        asquarehydro@gmail.com
+                      </p>
+                      <p className="text-sm text-gray-700 break-all">
+                        www.asquarehydroponics.com
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Contact Information Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12 animate-fade-in-up">
-            <Card className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                  <Mail className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Email Us</h3>
-                <p className="text-sm text-muted-foreground">asquarehydro@gmail.com</p>
-              </div>
-            </Card>
-
-            <Card className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                  <Phone className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
-                <p className="text-sm text-muted-foreground">+91 9152678498 / +91 9320222449</p>
-              </div>
-            </Card>
-
-            <Card className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm hover:scale-105">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                  <Clock className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Working Hours</h3>
-                <p className="text-sm text-muted-foreground">Mon - Sat: 9AM - 6PM</p>
-              </div>
-            </Card>
-          </div>
-
-          {/* VCard Image */}
-          <div className="mb-12 animate-scale-in">
-            <img
-              src={vcard}
-              alt="Contact Card"
-              className="rounded-2xl shadow-2xl mx-auto max-w-lg w-full hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-
-          {/* Contact Form */}
-          <div className="max-w-2xl mx-auto animate-fade-in-up">
-            <ContactForm
-              showTitle={false}
-              whatsappNumber="919152678498"
-            />
+          {/* Right Side - Contact Form */}
+          <div className="w-full lg:w-1/2 flex items-center justify-center px-6 lg:px-12 py-8">
+            <div className="w-full max-w-xl">
+              <ContactForm showTitle={false} whatsappNumber="919152678498" />
+            </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </Layout>
   );
 };
 

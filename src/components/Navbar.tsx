@@ -18,8 +18,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-green-100">
-      <div className="container mx-auto px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      <div className="container mx-auto px-6 py-0">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
@@ -27,12 +27,8 @@ const Navbar = () => {
               <img
                 src={logo}
                 alt="Asquare Hydroponics"
-                className="w-12 h-12 object-contain rounded-xl"
+                className="w-24 h-24 object-contain rounded-xl"
               />
-            </div>
-            <div className="hidden sm:block">
-              <div className="font-bold text-lg text-foreground">A² Hydroponics</div>
-              <div className="text-xs text-muted-foreground">Premium Solutions</div>
             </div>
           </Link>
 
@@ -42,10 +38,10 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 bg-green-50 ${
                   isActive(link.path)
                     ? "text-white bg-gradient-to-r from-green-600 to-emerald-600 shadow-md"
-                    : "text-foreground hover:text-green-600 hover:bg-green-50"
+                    : "text-foreground hover:text-green-600 "
                 }`}
               >
                 {link.label}

@@ -68,17 +68,21 @@ Sent from ASquare Hydroponics Website
   };
 
   return (
-    <Card className="p-8 md:p-12 border-0 shadow-2xl bg-white/90 backdrop-blur-sm">
+    <Card className="p-8 md:p-10 rounded-3xl border-0 shadow-2xl bg-white">
       {showTitle && (
         <>
-          <h2 className="text-3xl font-bold mb-2 text-foreground">{title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            {title}
+          </h2>
           {description && (
-            <p className="text-muted-foreground mb-6">{description}</p>
+            <p className="text-lg leading-relaxed text-gray-700 mb-8 max-w-xl">
+              {description}
+            </p>
           )}
         </>
       )}
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="grid md:grid-cols-2 gap-5">
           <div>
             <label
               htmlFor="name"
@@ -93,7 +97,7 @@ Sent from ASquare Hydroponics Website
               value={formData.name}
               onChange={handleChange}
               required
-              className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
+              className="transition-all duration-300 focus:ring-2 focus:ring-green-500 rounded-xl"
             />
           </div>
 
@@ -112,7 +116,7 @@ Sent from ASquare Hydroponics Website
               value={formData.email}
               onChange={handleChange}
               required
-              className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
+              className="transition-all duration-300 focus:ring-2 focus:ring-green-500 rounded-xl"
             />
           </div>
         </div>
@@ -131,7 +135,7 @@ Sent from ASquare Hydroponics Website
             placeholder="+91 98765 43210"
             value={formData.phone}
             onChange={handleChange}
-            className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
+            className="transition-all duration-300 focus:ring-2 focus:ring-green-500 rounded-xl"
           />
         </div>
 
@@ -146,25 +150,21 @@ Sent from ASquare Hydroponics Website
             id="message"
             name="message"
             placeholder="Tell us about your hydroponic needs..."
-            rows={5}
+            rows={4}
             value={formData.message}
             onChange={handleChange}
             required
-            className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
+            className="transition-all duration-300 focus:ring-2 focus:ring-green-500 rounded-xl"
           />
         </div>
 
         <Button
           type="submit"
           size="lg"
-          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] rounded-xl"
         >
           Send via WhatsApp
         </Button>
-
-        <p className="text-sm text-muted-foreground text-center">
-          This will open WhatsApp with your message ready to send
-        </p>
       </form>
     </Card>
   );
