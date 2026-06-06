@@ -10,6 +10,7 @@ type Blog = {
   title: string;
   slug: string;
   excerpt: string;
+  content: any;
   cover_image: string;
   category: string;
   published_at: string;
@@ -62,7 +63,9 @@ export default function BlogPage() {
         console.error("Supabase error:", error);
         setError(`Failed to load blogs: ${error.message}`);
       } else if (data) {
-        setBlogs(data);
+        // Filter out blogs with null or empty slugs
+        const validBlogs = data.filter(blog => blog.slug && blog.slug.trim() !== '');
+        setBlogs(validBlogs);
       }
     } catch (err) {
       console.error("Unexpected error:", err);
