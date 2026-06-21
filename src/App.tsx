@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFound";
 import Blog from "./pages/Blog";
 import WriteArticlePage from "./components/blogs/WriteBlogs";
 import ArticlePage from "./pages/ArticlePage";
-import Admin from "./pages/Admin";
+import ProtectedAdmin from "./components/admin/ProtectedAdmin";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +29,7 @@ const App = () => (
           <Route path="/articles" element={<Blog />} />
           <Route path="/create-articles" element={<WriteArticlePage />} />
           <Route path="/articles/:slug" element={<ArticlePage />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<ProtectedAdmin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
