@@ -16,7 +16,19 @@ interface BlogContentRendererProps {
 }
 
 export default function BlogContentRenderer({ content }: BlogContentRendererProps) {
-  if (!content || !Array.isArray(content)) {
+  // Handle content stored as string - parse it to array
+  let contentBlocks = content;
+
+  if (typeof content === 'string') {
+    try {
+      contentBlocks = JSON.parse(content);
+    } catch (error) {
+      console.error('Error parsing content string:', error);
+      return <div>Error rendering content.</div>;
+    }
+  }
+
+  if (!contentBlocks || !Array.isArray(contentBlocks)) {
     return <div>No content available.</div>;
   }
 
@@ -89,7 +101,7 @@ export default function BlogContentRenderer({ content }: BlogContentRendererProp
 
   return (
     <div className="prose prose-lg max-w-none">
-      {content.map(renderBlock)}
+      {contentBlocks.map(renderBlock)}
     </div>
   );
 }
