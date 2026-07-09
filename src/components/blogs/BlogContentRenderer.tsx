@@ -21,15 +21,37 @@ export default function BlogContentRenderer({ content }: BlogContentRendererProp
 
   if (typeof content === 'string') {
     try {
-      contentBlocks = JSON.parse(content);
+      const parsed = JSON.parse(content);
+      contentBlocks = parsed;
+
+      // Check for double-encoded content (all content wrapped in single text block)
+      if (Array.isArray(contentBlocks) && contentBlocks.length === 1) {
+        const firstBlock = contentBlocks[0];
+        if (firstBlock.type === 'text' && firstBlock.content && typeof firstBlock.content === 'string') {
+          try {
+            const innerParsed = JSON.parse(firstBlock.content);
+            if (Array.isArray(innerParsed) && innerParsed.length > 0) {
+              console.log('Detected and fixed double-encoded content');
+              contentBlocks = innerParsed;
+            }
+          } catch {
+            // Content field is not JSON, use as-is
+          }
+        }
+      }
     } catch (error) {
       console.error('Error parsing content string:', error);
-      return <div>Error rendering content.</div>;
+      // If parsing fails, create a text block with the raw content
+      contentBlocks = [{
+        id: 'fallback',
+        type: 'text',
+        content: content
+      }];
     }
   }
 
   if (!contentBlocks || !Array.isArray(contentBlocks)) {
-    return <div>No content available.</div>;
+    return <div className="text-gray-500 text-center py-8">No content available.</div>;
   }
 
   const renderBlock = (block: ContentBlock) => {

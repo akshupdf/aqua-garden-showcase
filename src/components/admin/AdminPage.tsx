@@ -185,11 +185,18 @@ export default function AdminPage() {
     }
 
     try {
-      // Prepare blog data
+      // Prepare blog data - ensure content is properly formatted
+      let contentToStore = contentBlocks.length > 0 ? contentBlocks : null;
+
+      // Ensure content is stored as proper JSON array string for Supabase
+      if (contentToStore && Array.isArray(contentToStore)) {
+        contentToStore = JSON.stringify(contentToStore);
+      }
+
       const blogData = {
         ...formData,
         excerpt: finalExcerpt,
-        content: contentBlocks.length > 0 ? contentBlocks : null,
+        content: contentToStore,
         published_at: formData.is_published ? new Date().toISOString() : null,
         updated_at: new Date().toISOString(),
       };
@@ -322,15 +329,34 @@ export default function AdminPage() {
   const editBlog = (blog: Blog) => {
     // Convert content to blocks if it's not already
     let blocks = blog.content;
-    if (!Array.isArray(blocks) && typeof blocks === 'string') {
-      // Convert old format to new block format
+
+    // Handle different content formats
+    if (!blocks) {
+      blocks = [];
+    } else if (typeof blocks === 'string') {
+      try {
+        // Try to parse as JSON array
+        const parsed = JSON.parse(blocks);
+        blocks = Array.isArray(parsed) ? parsed : [{
+          id: uuidv4(),
+          type: 'text',
+          content: blocks
+        }];
+      } catch {
+        // If parsing fails, treat as plain text
+        blocks = [{
+          id: uuidv4(),
+          type: 'text',
+          content: blocks
+        }];
+      }
+    } else if (!Array.isArray(blocks)) {
+      // Ensure blocks is always an array
       blocks = [{
         id: uuidv4(),
         type: 'text',
-        content: blocks
+        content: String(blocks)
       }];
-    } else if (!blocks) {
-      blocks = [];
     }
 
     setFormData({

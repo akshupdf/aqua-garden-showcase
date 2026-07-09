@@ -22,7 +22,29 @@ interface RichBlogEditorProps {
 }
 
 export default function RichBlogEditor({ onContentChange, initialContent = [] }: RichBlogEditorProps) {
-  const [blocks, setBlocks] = useState<ContentBlock[]>(initialContent);
+  // Ensure initial content is properly formatted
+  const normalizeInitialContent = (content: ContentBlock[]): ContentBlock[] => {
+    if (!Array.isArray(content)) return [];
+
+    return content.map(block => {
+      // Handle string content that might be JSON
+      if (typeof block === 'string') {
+        try {
+          const parsed = JSON.parse(block);
+          return Array.isArray(parsed) ? parsed[0] : parsed;
+        } catch {
+          return {
+            id: uuidv4(),
+            type: 'text',
+            content: block
+          };
+        }
+      }
+      return block;
+    });
+  };
+
+  const [blocks, setBlocks] = useState<ContentBlock[]>(normalizeInitialContent(initialContent));
   const [uploading, setUploading] = useState(false);
 
   const addBlock = (type: ContentBlockType, index?: number) => {
@@ -133,8 +155,10 @@ export default function RichBlogEditor({ onContentChange, initialContent = [] }:
       case 'list':
         return <ListBlock
           key={block.id}
+          id={block.id}
           ordered={block.ordered || false}
           items={block.items || []}
+          onUpdateList={(ordered, items) => updateBlock(block.id, { ordered, items })}
           {...commonProps}
         />;
       default:
@@ -337,30 +361,32 @@ function ImageBlock({
 }
 
 function ListBlock({
+  id,
   ordered,
   items,
-  onChange,
+  onUpdateList,
   onRemove
 }: {
+  id: string;
   ordered: boolean;
   items: string[];
-  onChange: (value: string) => void;
+  onUpdateList: (ordered: boolean, items: string[]) => void;
   onRemove: () => void;
 }) {
   const addItem = () => {
     const newItems = [...items, ''];
-    onChange(JSON.stringify({ ordered, items: newItems }));
+    onUpdateList(ordered, newItems);
   };
 
   const updateItem = (index: number, value: string) => {
     const newItems = [...items];
     newItems[index] = value;
-    onChange(JSON.stringify({ ordered, items: newItems }));
+    onUpdateList(ordered, newItems);
   };
 
   const removeItem = (index: number) => {
     const newItems = items.filter((_, i) => i !== index);
-    onChange(JSON.stringify({ ordered, items: newItems }));
+    onUpdateList(ordered, newItems);
   };
 
   return (
