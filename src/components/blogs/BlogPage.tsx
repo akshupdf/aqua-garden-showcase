@@ -142,21 +142,21 @@ export default function BlogPage() {
                 to={`/articles/${blog.slug}`}
                 className="group"
               >
-                <article className="rounded-2xl border bg-background overflow-hidden transition hover:shadow-md">
+                <article className="rounded-2xl border bg-background overflow-hidden transition hover:shadow-md h-[380px] flex flex-col">
                   {blog.cover_image && (
                     <img
                       src={blog.cover_image}
                       alt={blog.title}
-                      className="h-48 w-full object-cover"
+                      className="h-48 w-full object-cover flex-shrink-0"
                     />
                   )}
 
-                  <div className="p-5">
+                  <div className="p-5 flex flex-col flex-grow">
                     <p className="text-xs uppercase tracking-wide text-muted-foreground">
                       {blog.category}
                     </p>
 
-                    <h3 className="mt-2 text-lg font-semibold group-hover:text-primary">
+                    <h3 className="mt-2 text-lg font-semibold group-hover:text-primary line-clamp-2">
                       {blog.title}
                     </h3>
 

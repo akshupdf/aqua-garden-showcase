@@ -126,27 +126,55 @@
 
 ---
 
+## Blog Post 3: Nanobubble Aeration in Hydroponics
+
+**Title:** Nanobubble Aeration: The Sub-Micron Secret to 50% Higher Hydroponic Yields in 2026
+
+**URL Slug:** nanobubble-aeration-hydroponics-root-oxygenation-2026
+
+**Excerpt:** Discover how sub-micron oxygen nanobubbles are revolutionizing hydroponics in 2026 by supersaturating dissolved oxygen, eliminating root rot, and accelerating crop growth by up to 50%.
+
+**Category:** System Guides (systems)
+
+**Cover Image:** https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200&h=600&fit=crop
+
+**Dedicated Markdown File:** `blog-nanobubble-aeration.md`
+
+---
+
+## Blog Post 4: Solar-Powered Off-Grid Aeroponics
+
+**Title:** Solar-Powered Off-Grid Aeroponics: Zero-Energy Urban Vertical Farming in 2026
+
+**URL Slug:** solar-powered-off-grid-aeroponics-vertical-farming-2026
+
+**Excerpt:** Learn how pairing low-voltage high-pressure aeroponics with micro-solar systems is enabling 100% off-grid, zero-electricity-cost vertical farming in urban spaces.
+
+**Category:** Urban Farming (urban)
+
+**Cover Image:** https://images.unsplash.com/photo-1509391365360-2e959784a276?w=1200&h=600&fit=crop
+
+**Dedicated Markdown File:** `blog-solar-powered-aeroponics.md`
+
+---
+
 ## Manual Publication Instructions:
 
-1. **Access the Admin Panel:** Navigate to http://localhost:8080/admin
+1. **Access the Admin Panel:** Navigate to `/admin` in your browser.
 2. **Fill in the Blog Form:**
-   - Copy the title, URL slug, and excerpt from above
-   - Select the appropriate category
-   - Upload or use the suggested cover image URL
-   - Check "Publish immediately" for both posts
+   - Copy the title, URL slug, and excerpt from any of the `.md` files
+   - Select the appropriate category (`systems`, `urban`, `basics`, etc.)
+   - Use the cover image URL or upload your custom cover image
+   - Check "Publish immediately"
 3. **Add Content Blocks:**
    - Use the "Rich Blog Editor" toolbar to add headings, text blocks, and lists
-   - Follow the content structure provided above
-   - Add each content block in the order listed
-4. **Submit and Publish:** Click "Create Blog Post" for each blog
+   - Follow the content structure provided in the `.md` files
+4. **Submit and Publish:** Click "Create Blog Post"
 
 ## Alternative: Automatic Publication Script
 
-The `publish-blogs.js` script is ready but requires Supabase connectivity.
-You can run it when the connection is restored:
+Run the automated publishing scripts using Node:
 
 ```bash
-node publish-blogs.js
+node publish-2-trending-blogs.js
 ```
-
-This script will automatically create and publish both blog posts with all the content properly formatted.
