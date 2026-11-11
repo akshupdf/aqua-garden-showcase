@@ -68,7 +68,7 @@ Sent from ASquare Hydroponics Website
   };
 
   return (
-    <Card className="p-8 md:p-10 rounded-3xl border-0 shadow-2xl bg-white">
+    <Card className="p-5 sm:p-8 md:p-10 rounded-3xl border-0 shadow-2xl bg-white">
       {showTitle && (
         <>
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">

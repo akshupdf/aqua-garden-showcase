@@ -1,12 +1,13 @@
 import ArticleContent from "@/components/blogs/ArticleContent";
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
+import Footer from "@/components/Footer";
 
 const ArticlePage = () => {
   return (
-    <main className="min-h-screen">
-      <Navbar />
+    <Layout>
       <ArticleContent />
-    </main>
+      <Footer />
+    </Layout>
   );
 };
 

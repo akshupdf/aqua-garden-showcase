@@ -1,15 +1,13 @@
 import BlogPage from "@/components/blogs/BlogPage";
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
+import Footer from "@/components/Footer";
 
 const Blog = () => {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-
-      <section className="mt-16">
-        <BlogPage />
-      </section>
-    </main>
+    <Layout>
+      <BlogPage />
+      <Footer />
+    </Layout>
   );
 };
 

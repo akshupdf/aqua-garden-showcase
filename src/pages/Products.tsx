@@ -247,7 +247,7 @@ const Products = () => {
     <Layout>
       <div className="min-h-screen relative">
       {/* Background */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50"></div>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-400/10 rounded-full blur-3xl animate-pulse-slow"></div>
         <div
@@ -257,7 +257,7 @@ const Products = () => {
       </div>
 
       <section className="pt-4 pb-24 relative">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           {/* Compact Header */}
           <div className="max-w-xl mx-auto text-center mb-6 animate-fade-in">
             <h1 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
@@ -270,48 +270,50 @@ const Products = () => {
 
           {/* Main Content with Vertical Tabs */}
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Vertical Tabs Sidebar */}
+            {/* Category Navigation (Horizontal scroll on mobile, sticky sidebar on desktop) */}
             <div className="lg:w-1/5 animate-fade-in-left">
-              <div className="sticky top-24 space-y-2">
+              <div className="lg:sticky lg:top-24">
                 <h3 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
                   <Leaf className="w-4 h-4 text-green-600" />
                   Categories
                 </h3>
-                {Object.entries(categoryData).map(([key, category]) => {
-                  const Icon = category.icon;
-                  const isActive = selectedCategory === key;
-                  return (
-                    <button
-                      key={key}
-                      onClick={() =>
-                        setSelectedCategory(key as keyof typeof categoryData)
-                      }
-                      className={`w-full text-left p-3 rounded-lg transition-all duration-300 group ${
-                        isActive
-                          ? `bg-gradient-to-r ${category.color} text-white shadow-md scale-105`
-                          : "bg-white/80 backdrop-blur-sm hover:bg-white border border-green-200 hover:shadow-sm"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <Icon
-                          className={`w-4 h-4 ${
-                            isActive ? "text-white" : "text-green-600"
-                          }`}
-                        />
-                        <span
-                          className={`text-sm font-medium ${
-                            isActive ? "text-white" : "text-foreground"
-                          }`}
-                        >
-                          {category.name}
-                        </span>
-                        {isActive && (
-                          <ChevronRight className="w-4 h-4 text-white ml-auto" />
-                        )}
-                      </div>
-                    </button>
-                  );
-                })}
+                <div className="flex lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+                  {Object.entries(categoryData).map(([key, category]) => {
+                    const Icon = category.icon;
+                    const isActive = selectedCategory === key;
+                    return (
+                      <button
+                        key={key}
+                        onClick={() =>
+                          setSelectedCategory(key as keyof typeof categoryData)
+                        }
+                        className={`flex-shrink-0 lg:w-full text-left px-3.5 py-2.5 lg:p-3 rounded-xl transition-all duration-300 group ${
+                          isActive
+                            ? `bg-gradient-to-r ${category.color} text-white shadow-md scale-[1.02]`
+                            : "bg-white/80 backdrop-blur-sm hover:bg-white border border-green-200 hover:shadow-sm"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon
+                            className={`w-4 h-4 ${
+                              isActive ? "text-white" : "text-green-600"
+                            }`}
+                          />
+                          <span
+                            className={`text-sm font-medium whitespace-nowrap ${
+                              isActive ? "text-white" : "text-foreground"
+                            }`}
+                          >
+                            {category.name}
+                          </span>
+                          {isActive && (
+                            <ChevronRight className="w-4 h-4 text-white ml-auto hidden lg:block" />
+                          )}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 

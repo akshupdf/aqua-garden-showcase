@@ -5,25 +5,22 @@ import contact_bg from "../assets/contact_bg.png";
 const Contact = () => {
   return (
     <Layout>
-      <div className="relative h-screen overflow-hidden">
+      <div className="relative min-h-[calc(100vh-5rem)] py-8 sm:py-12">
         {/* Background Image */}
-        <div className="fixed inset-0 -z-10">
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
           <img
             src={contact_bg}
             alt="Contact Background"
             className="w-full h-full object-cover object-top"
           />
+          {/* Responsive overlay for text visibility */}
+          <div className="absolute inset-0 bg-black/60 lg:bg-gradient-to-r lg:from-black/75 lg:via-black/40 lg:to-black/20" />
         </div>
 
-        {/* Dark overlay on left side for text visibility */}
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
-        </div>
-
-        {/* Main Content - Full Height Flex Container */}
-        <div className="h-full flex">
+        {/* Main Content - Responsive Flex Container */}
+        <div className="container mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
           {/* Left Side - Text Content */}
-          <div className="w-full lg:w-1/2 flex flex-col  mt-8 px-6 lg:px-12  ">
+          <div className="w-full lg:w-1/2 flex flex-col">
             <div className="max-w-xl space-y-2">
               {/* Heading */}
               <div className="space-y-2">
@@ -123,7 +120,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="w-full lg:w-1/2 flex items-center justify-center px-6 lg:px-12 py-8">
+          <div className="w-full lg:w-1/2 flex items-center justify-center py-4 lg:py-8">
             <div className="w-full max-w-xl">
               <ContactForm showTitle={false} whatsappNumber="919152678498" />
             </div>

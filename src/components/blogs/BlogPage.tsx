@@ -76,27 +76,27 @@ export default function BlogPage() {
   };
 
   return (
-    <section className="relative py-20 bg-background">
-      <div className="container mx-auto px-6 grid md:grid-cols-[25%_75%] gap-12">
+    <section className="relative py-8 sm:py-12 md:py-16 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 grid md:grid-cols-[260px_1fr] gap-8 md:gap-12">
         {/* LEFT SIDEBAR */}
-        <aside className="sticky top-24 space-y-6 h-fit">
+        <aside className="md:sticky md:top-24 space-y-4 md:space-y-6 h-fit">
           <input
             placeholder="Search articles..."
-            className="w-full rounded-lg border px-4 py-2 text-sm"
+            className="w-full rounded-xl border border-border px-4 py-2.5 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-green-500"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
 
-          <div className="space-y-2">
+          <div className="flex md:flex-col gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
             {BLOG_CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`w-full text-left px-4 py-2 rounded-lg transition
+                className={`flex-shrink-0 md:w-full text-left px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition whitespace-nowrap
                   ${
                     activeCategory === cat.id
-                      ? "bg-primary/10 text-primary"
-                      : "hover:bg-muted"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "bg-muted/50 hover:bg-muted text-foreground"
                   }`}
               >
                 {cat.label}

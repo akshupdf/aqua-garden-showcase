@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-muted bg-background  ">
-      <div className="container mx-auto px-6 py-12">
+    <footer className="border-t border-muted bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 py-12">
         <div className="grid gap-8 md:grid-cols-3 items-start">
           {/* BRAND / MESSAGE */}
           <div>
@@ -46,6 +46,14 @@ export default function Footer() {
                   className="hover:text-primary transition"
                 >
                   Annual Maintenance
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/gallery"
+                  className="hover:text-primary transition"
+                >
+                  Photo Gallery
                 </Link>
               </li>
               <li>

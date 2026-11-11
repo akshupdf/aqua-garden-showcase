@@ -173,9 +173,9 @@ export default function AMCShowcase() {
   return (
     <section className="relative py-16 overflow-hidden">
       {/* Background Image with Light Overlay */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center md:bg-fixed"
           style={{
             backgroundImage: `url(${content.bgImage})`,
           }}
@@ -184,11 +184,11 @@ export default function AMCShowcase() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-[300px_1fr] gap-6 items-start">
             {/* LEFT - SERVICE LIST */}
-            <div className="space-y-2 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 lg:p-8 border border-white/60">
+            <div className="space-y-2 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border border-white/60">
               <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                 <Leaf className="w-5 h-5 text-green-600" />
                 Our Services
@@ -225,7 +225,7 @@ export default function AMCShowcase() {
             </div>
 
             {/* RIGHT - CONTENT */}
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 lg:p-8 border border-white/60">
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 border border-white/60">
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
                 {content.heading}
               </h2>

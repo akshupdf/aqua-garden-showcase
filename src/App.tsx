@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Blog from "./pages/Blog";
 import WriteArticlePage from "./components/blogs/WriteBlogs";
 import ArticlePage from "./pages/ArticlePage";
+import Gallery from "./pages/Gallery";
 import ProtectedAdmin from "./components/admin/ProtectedAdmin";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/articles" element={<Blog />} />
           <Route path="/create-articles" element={<WriteArticlePage />} />

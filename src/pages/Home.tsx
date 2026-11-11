@@ -1,16 +1,18 @@
 import Layout from "@/components/Layout";
+import Hero from "@/components/Hero";
 import ProductCarousel from "@/components/ProductCarousel";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 
 const Home = () => {
   return (
-    <Layout>
+    <Layout noPaddingTop>
+      <Hero />
       <ProductCarousel />
 
       {/* Contact Form Section */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24 relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               Get In Touch

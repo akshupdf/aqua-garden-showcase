@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { supabase, supabaseAdmin, createBlogImagesBucket } from "@/lib/supabase";
 import { testSupabaseConnection } from "@/lib/supabase-test";
 import RichBlogEditor from "./RichBlogEditor";
+import GalleryManager from "@/components/gallery/GalleryManager";
 import { v4 as uuidv4 } from 'uuid';
 
 // Define types
@@ -58,6 +59,7 @@ export default function AdminPage() {
 
   const [newCategory, setNewCategory] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [mainAdminTab, setMainAdminTab] = useState<"blogs" | "gallery">("blogs");
 
   useEffect(() => {
     testSupabaseConnection();
@@ -393,9 +395,45 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-6">
-        <h1 className="text-3xl font-bold mb-8">Blog Admin Panel</h1>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">A² Admin Dashboard</h1>
+            <p className="text-sm text-gray-500 mt-1">Manage articles, educational content, and photo gallery</p>
+          </div>
 
-        {/* Messages */}
+          <div className="flex bg-gray-200 p-1 rounded-xl">
+            <button
+              type="button"
+              onClick={() => setMainAdminTab("blogs")}
+              className={`px-5 py-2 rounded-lg text-sm font-semibold transition ${
+                mainAdminTab === "blogs"
+                  ? "bg-white text-green-700 shadow-sm"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              📝 Articles & Blogs
+            </button>
+            <button
+              type="button"
+              onClick={() => setMainAdminTab("gallery")}
+              className={`px-5 py-2 rounded-lg text-sm font-semibold transition ${
+                mainAdminTab === "gallery"
+                  ? "bg-white text-green-700 shadow-sm"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              📸 Photo Gallery
+            </button>
+          </div>
+        </div>
+
+        {mainAdminTab === "gallery" ? (
+          <div className="bg-white rounded-2xl shadow-md p-6 md:p-8">
+            <GalleryManager showHeader={true} />
+          </div>
+        ) : (
+          <>
+            {/* Messages */}
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
             <div className="flex justify-between items-start">
@@ -632,6 +670,8 @@ export default function AdminPage() {
             </div>
           )}
         </div>
+        </>
+        )}
       </div>
     </div>
   );

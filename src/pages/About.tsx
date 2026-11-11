@@ -39,9 +39,9 @@ const About = () => {
     <Layout>
       <div className="min-h-screen relative">
         {/* Fullscreen Animated Background */}
-        <div className="fixed inset-0 -z-10">
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50"></div>
-          <div className="absolute inset-0 bg-[url(‘data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMmM1NWUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMi0yIC44OTUtMiAyIC44OTUgMiAyIDJ6bTAgMThjMS4xMDUgMCAyLS44OTUgMi0ycy0uODk1LTItMi0yLTIgLjg5NS0yIDIgLjg5NSAyIDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==’)] opacity-40"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMmM1NWUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMi0yIC44OTUtMiAyIC44OTUgMiAyIDJ6bTAgMThjMS4xMDUgMCAyLS44OTUgMi0ycy0uODk1LTItMi0yLTIgLjg5NS0yIDIgLjg5NSAyIDIgMnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-40"></div>
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
           <div
             className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl animate-pulse-slow"
@@ -54,7 +54,7 @@ const About = () => {
         </div>
 
         <section className="pt-12 pb-24 relative">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 sm:px-6">
           {/* Hero Section */}
 
           <div className="max-w-xl mx-auto text-center mb-6 animate-fade-in">
@@ -65,7 +65,7 @@ const About = () => {
 
           {/* About Content */}
           <div className="max-w-4xl mx-auto mb-20 animate-fade-in-up">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-green-100">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl border border-green-100">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
                   <Leaf className="w-6 h-6 text-white" />
